@@ -2,6 +2,8 @@ package com.medonline.model;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
+@Entity
 public class Product {
 private int id;
 private String name;
