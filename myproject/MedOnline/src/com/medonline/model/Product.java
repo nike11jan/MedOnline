@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 @Entity
 public class Product {
 private int id;
+private int weight;
 private String name;
 private String description;
 private float price;
