@@ -1,19 +1,16 @@
 package com.medonline.model;
 
 import javax.persistence.Column;
+import javax.persistence.Embeddable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-@Entity
-@Table(name="address")
+@Embeddable
 public class Address {
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="id")
-private String id;
+
 	@Column(name="line1")
 private String line1;
 	@Column(name="line2")
@@ -26,12 +23,7 @@ private int postalCode;
 private String state;
 	@Column(name="country")
 private String country;
-public String getId() {
-	return id;
-}
-public void setId(String id) {
-	this.id = id;
-}
+
 public String getLine1() {
 	return line1;
 }
@@ -41,10 +33,10 @@ public void setLine1(String line1) {
 public String getLine2() {
 	return line2;
 }
-public Address(String id, String line1, String line2, String line3,
+public Address( String line1, String line2, String line3,
 		int postalCode, String state, String country) {
 	super();
-	this.id = id;
+
 	this.line1 = line1;
 	this.line2 = line2;
 	this.line3 = line3;

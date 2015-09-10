@@ -2,6 +2,7 @@ package com.medonline.model;
 
 import javax.annotation.Generated;
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -31,7 +32,7 @@ private String name;
 private String userName;
 @Column(name="password")
 private String password;;
-@Column(name="address")
+@Embedded
 private Address address;
 public int getId() {
 	return id;
