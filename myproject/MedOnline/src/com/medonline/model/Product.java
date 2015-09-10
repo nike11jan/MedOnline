@@ -2,15 +2,28 @@ package com.medonline.model;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 @Entity
+@Table(name="product")
 public class Product {
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name="id")
 private int id;
-private int weight;
+@Column(name="name")
 private String name;
+@Column(name="description")
 private String description;
+@Column(name="price")
 private float price;
-private Date expiry;
+@Column(name="expiry_date")
+private Date expiryDate;
+@Column(name="manufacturing_date")
 private Date manufacturingDate;
 public int getId() {
 	return id;
@@ -36,11 +49,11 @@ public float getPrice() {
 public void setPrice(float price) {
 	this.price = price;
 }
-public Date getExpiry() {
-	return expiry;
+public Date getExpiryDate() {
+	return expiryDate;
 }
-public void setExpiry(Date expiry) {
-	this.expiry = expiry;
+public void setExpiryDate(Date expiryDate) {
+	this.expiryDate = expiryDate;
 }
 public Date getManufacturingDate() {
 	return manufacturingDate;
@@ -49,13 +62,13 @@ public void setManufacturingDate(Date manufacturingDate) {
 	this.manufacturingDate = manufacturingDate;
 }
 public Product(int id, String name, String description, float price,
-		Date expiry, Date manufacturingDate) {
+		Date expiryDate, Date manufacturingDate) {
 	super();
 	this.id = id;
 	this.name = name;
 	this.description = description;
 	this.price = price;
-	this.expiry = expiry;
+	this.expiryDate = expiryDate;
 	this.manufacturingDate = manufacturingDate;
 }
 

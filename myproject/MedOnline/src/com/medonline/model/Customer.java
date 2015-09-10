@@ -25,9 +25,13 @@ public Customer(int id, String name, String userName, String password,
 		this.password = password;
 		this.address = address;
 	}
+@Column(name="name")
 private String name;
+@Column(name="user_name")
 private String userName;
+@Column(name="password")
 private String password;;
+@Column(name="address")
 private Address address;
 public int getId() {
 	return id;
