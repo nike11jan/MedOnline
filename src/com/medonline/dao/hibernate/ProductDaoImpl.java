@@ -1,5 +1,6 @@
 package com.medonline.dao.hibernate;
 
+import java.util.Date;
 import java.util.List;
 
 import org.hibernate.SessionFactory;
@@ -37,7 +38,10 @@ public class ProductDaoImpl extends HibernateDaoSupport implements ProductDao{
 		// TODO Auto-generated method stub
 		return null;
 	}
-
+public static void main(String arg[])
+{
+	new ProductDaoImpl().addProducct(new Product(0, "test", "ddddddfs", 100, new Date(), new Date()));
+}
 	
 
 }

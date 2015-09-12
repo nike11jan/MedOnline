@@ -1,12 +1,16 @@
 package com.medonline.model;
 
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CollectionTable;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.Table;
 
 @Entity
@@ -26,18 +30,12 @@ private int customerId;
 private int status;
 	@Column(name="amount")
 private double amount;
+	   @ElementCollection
+	   @CollectionTable(name="order_details", joinColumns=@JoinColumn(name="order_id"))
+	   @Column(name="order_details")
+	private List<OrderDetails> orderDetails;
 	public Order() {
 		super();
-	}
-	public Order(int id, Date orderDate, Date deliveryDate, int customerId,
-			int status, double amount) {
-		super();
-		this.id = id;
-		this.orderDate = orderDate;
-		this.deliveryDate = deliveryDate;
-		this.customerId = customerId;
-		this.status = status;
-		this.amount = amount;
 	}
 	public int getId() {
 		return id;
@@ -75,4 +73,22 @@ private double amount;
 	public void setAmount(double amount) {
 		this.amount = amount;
 	}
+	public List<OrderDetails> getOrderDetails() {
+		return orderDetails;
+	}
+	public void setOrderDetails(List<OrderDetails> orderDetails) {
+		this.orderDetails = orderDetails;
+	}
+	public Order(int id, Date orderDate, Date deliveryDate, int customerId,
+			int status, double amount, List<OrderDetails> orderDetails) {
+		super();
+		this.id = id;
+		this.orderDate = orderDate;
+		this.deliveryDate = deliveryDate;
+		this.customerId = customerId;
+		this.status = status;
+		this.amount = amount;
+		this.orderDetails = orderDetails;
+	}
+	
 }
