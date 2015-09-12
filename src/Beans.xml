@@ -4,7 +4,7 @@
 	http://www.springframework.org/schema/beans/spring-beans.xsd 
 	http://www.springframework.org/schema/aop 
 	http://www.springframework.org/schema/aop/spring-aop.xsd ">
-<bean id="logg" class="com.myorg.aspect.Logging"></bean>
+<!-- <bean id="logg" class="com.myorg.aspect.Logging"></bean> -->
 <aop:aspectj-autoproxy/>
 <!-- <aop:config>
 		<aop:aspect id="logger" ref="logg">
@@ -16,18 +16,21 @@
  -->
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="url">
-			<value>jdbc:mysql://localhost:3306/test</value>
+			<value>jdbc:mysql://localhost:3306/MedOnline</value>
 		</property>
 		<property name="username">
-			<value>root</value>
+			<value>nikhil</value>
 		</property>
-		<property name="password"><value></value></property>
+		<property name="password"><value>nikhil</value></property>
 	</bean>
 	<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
-		<property name="mappingResources">
+		<property name="mappingClass">
 			<list>
-				<value>user.hbm.xml</value>
+				<value>com.medonline.model.Product</value>
+					<value>com.medonline.model.Customer</value>
+						<value>com.medonline.model.Order</value>
+							<value>com.medonline.model.OrderDetails</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">
@@ -38,36 +41,15 @@
 				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
 				<prop key="hibernate.cache.provider_class">org.hibernate.cache.EhCacheProvider</prop>
 				<prop key="hibernate.max_fetch_depth">3</prop>
+				<prop key="hibernate.hbm2ddl.auto">create</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.format_sql">true</prop>
 			</props>			
 		</property>
 	</bean>
 <bean id="hibernateuserDao" class="com.myorg.dao.hibernate.HibernateUserDao">
 <property name="sessionFactory" ref="sessionFactory"/>
 </bean>
-	<bean id="sagar" class="com.myorg.model.Employee">
-		<property name="id" value="593250" />
-		<property name="name" value="sagar" />
-		<property name="currentAddress" ref="address"></property>
-		<property name="permanentAddress" ref="address"></property>
-		<property name="skills">
-			<set>
-				<bean class="com.myorg.model.Skill">
-					<constructor-arg value="0001" />
-					<constructor-arg value="Java" />
-					<constructor-arg value="core java and j2ee" />
-				</bean>
-
-			</set>
-		</property>
-	</bean>
-
-	<bean id="address" class="com.myorg.model.Address">
-		<constructor-arg value="fadake road" />
-		<constructor-arg value="dombivli" />
-		<constructor-arg value="maharashtra" />
-		<constructor-arg value="421202" />
-	</bean>
 	
-		
 	
 </beans>
