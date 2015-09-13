@@ -1,6 +1,8 @@
 package com.medonline.dao.hibernate;
 
+
 import java.util.ArrayList;
+
 import java.util.Date;
 import java.util.List;
 
@@ -67,6 +69,7 @@ public class ProductDaoImpl extends HibernateDaoSupport implements ProductDao{
 		List<Product> prodList=((ProductDao) appContext.getBean("ProductDao")).searchProduct(p);
 		System.out.println(prodList.get(0));
 	}
+
 	
 
 }

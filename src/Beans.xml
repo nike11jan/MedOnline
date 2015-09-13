@@ -1,0 +1,55 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd 
+	http://www.springframework.org/schema/aop 
+	http://www.springframework.org/schema/aop/spring-aop.xsd ">
+<!-- <bean id="logg" class="com.myorg.aspect.Logging"></bean> -->
+<aop:aspectj-autoproxy/>
+<!-- <aop:config>
+		<aop:aspect id="logger" ref="logg">
+			<aop:after-returning method="afterReturn"
+				pointcut="execution(public String com.myorg.model.Employee.getName(..))"
+				returning="retVal" />
+		</aop:aspect>
+</aop:config>
+ -->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="url">
+			<value>jdbc:mysql://localhost:3306/MedOnline</value>
+		</property>
+		<property name="username">
+			<value>nikhil</value>
+		</property>
+		<property name="password"><value>nikhil</value></property>
+	</bean>
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="mappingClass">
+			<list>
+				<value>com.medonline.model.Product</value>
+					<value>com.medonline.model.Customer</value>
+						<value>com.medonline.model.Order</value>
+							<value>com.medonline.model.OrderDetails</value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<!--<prop key="hibernate.dialect">org.hibernate.dialect.HSQLDialect</prop> -->
+				<!--<prop key="hibernate.dialect">org.hibernate.dialect.Oracle9Dialect</prop> -->
+				<!--<prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</prop> -->
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+				<prop key="hibernate.cache.provider_class">org.hibernate.cache.EhCacheProvider</prop>
+				<prop key="hibernate.max_fetch_depth">3</prop>
+				<prop key="hibernate.hbm2ddl.auto">create</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.format_sql">true</prop>
+			</props>			
+		</property>
+	</bean>
+<bean id="hibernateuserDao" class="com.myorg.dao.hibernate.HibernateUserDao">
+<property name="sessionFactory" ref="sessionFactory"/>
+</bean>
+	
+	
+</beans>
