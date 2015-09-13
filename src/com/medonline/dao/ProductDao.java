@@ -8,6 +8,6 @@ public interface ProductDao {
 
 	public boolean addProducct(Product product);
 	public Product getProductByName();
-	public Product searchProduct(Product product);
+	public List<Product> searchProduct(Product product);
 	public List<Product> getProductList();
 }

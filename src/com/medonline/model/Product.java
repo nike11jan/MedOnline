@@ -23,6 +23,9 @@ private String description;
 private float price;
 @Column(name="expiry_date")
 private Date expiryDate;
+public Product() {
+	super();
+}
 @Column(name="manufacturing_date")
 private Date manufacturingDate;
 public int getId() {
@@ -70,6 +73,12 @@ public Product(int id, String name, String description, float price,
 	this.price = price;
 	this.expiryDate = expiryDate;
 	this.manufacturingDate = manufacturingDate;
+}
+@Override
+public String toString() {
+	return "Product [id=" + id + ", name=" + name + ", description="
+			+ description + ", price=" + price + ", expiryDate=" + expiryDate
+			+ ", manufacturingDate=" + manufacturingDate + "]";
 }
 
 }

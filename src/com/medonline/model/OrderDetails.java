@@ -17,5 +17,15 @@ private int id;
 private int productId;
 	@Column(name="quantity")
 private int quantity;
+	public OrderDetails(int id, int productId, int quantity) {
+		super();
+		this.id = id;
+		this.productId = productId;
+		this.quantity = quantity;
+	}
+	public OrderDetails() {
+		super();
+	}
+	
 
 }
